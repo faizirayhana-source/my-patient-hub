@@ -1,3 +1,5 @@
+import SignUp from "../pages/signup/SignUp";
+import SignIn from "../pages/signin/SignIn";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Dashboard from "../pages/dashboard/Dashboard";
 import Appointment from "../pages/appointment/Appointment";
@@ -14,6 +16,8 @@ function AppRouter() {
         {/* Default route */}
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         {/* Main routes */}
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/signin" element={<SignIn />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/findhospital" element={<Clinic />} />
@@ -23,7 +27,7 @@ function AppRouter() {
 
 
         {/* 404 - any unknown route */}
-        <Route path="*" element={<Navigate to="/dashboard" replace />} />
+        <Route path="/" element={<Navigate to="/SignIn" replace />} />
 
       </Routes>
     </BrowserRouter>

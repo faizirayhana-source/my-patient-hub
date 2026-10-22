@@ -1,65 +1,148 @@
-import { Bell, Home, LogOut, Menu, Settings } from 'lucide-react'
-import SearchInput from '../ui/SearchInput'
-import { Button } from '../ui/button'
-import { useEffect, useState } from 'react';
+import { Home, LogOut, Menu, Settings } from "lucide-react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Header = ({ toggleSidebar, toggleMobilSidebar, }) => {
+import SearchInput from "../ui/SearchInput";
+import Notifications from "../ui/Notifications";
+import { Button } from "../ui/button";
+
+const Header = ({ toggleSidebar, toggleMobilSidebar }) => {
   const [isScroll, setIsScroll] = useState(false);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    function handleScroll() {
+    const handleScroll = () => {
       setIsScroll(window.scrollY > 0);
-    }
-    window.addEventListener('scroll', handleScroll);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <header className={`sticky top-3 right-0 left-auto z-40
-    flex w-full shrink-0 flex-col
-    box-border
-    min-h-[4.6875rem]
-    items-center
-    rounded-2xl
-    py-2
-    text-[#344767]
-   
-    transition-shadow duration-300
-    ease-[cubic-bezier(0.4,0,0.2,1)]
-    
-  ${isScroll ? "bg-white/80 shadow-[inset_0_0_1px_1px_rgba(255,255,255,0.9),0_20px_27px_0_rgba(0,0,0,0.05)]  backdrop-saturate-[200%]  backdrop-blur-[30px]" : ""}`}
+    <header
+      className={`sticky top-3 z-40
+         flex w-full min-w-0 flex-col
+         gap-3 rounded-2xl px-3 py-3
+         text-[#F5F1EB] transition-shadow
+         duration-300 ease-in-out
+         sm:flex-row sm:flex-wrap
+         sm:items-center sm:justify-between
+         sm:gap-3 sm:px-4 min-[1280px]:flex-nowrap
+        ${isScroll ? "bg-gray-100/80 backdrop-blur-[30px]" : ""}`}
     >
-      <div className='w-full flex items-center justify-between px-4 py-3 '>
-        <div className='flex items-center flex-row gap-4'>
-          {/* mobil menu */}
-          <Button variant='secondary' className='lg:hidden' onClick={toggleMobilSidebar}>
-            <Menu size={20} />
-          </Button>
-
-          {/* Large screen */}
-          <Button variant='ghost' onClick={toggleSidebar} className='hidden lg:block'>
-            <Menu size={20} />
-          </Button>
-          <div className='flex items-center gap-2'>
-            <Home size={20} /> /
-            <span className='text-md font-normal text-gray-900'>Dashboard</span>
+      {/* Dashboard */}
+      <div className="flex min-w-0 shrink-0 items-center gap-4 sm:gap-14">
+        <div className="min-w-0 text-[14px] text-gray-500">
+          <div className="flex translate-x-3 items-center gap-2 whitespace-nowrap text-slate-500">
+            <Home size={14} className="shrink-0" />
+            <span>/</span>
+            <span>Dashboard</span>
           </div>
+
+          <h1 className="whitespace-nowrap text-[15px] font-semibold text-slate-900">
+            Dashboard
+          </h1>
         </div>
 
-        <div className='flex items-center flex-row gap-4'>
-          <SearchInput />
-          <Settings size={20} className='text-gray-900' />
-          <Bell size={20} className='text-gray-900' />
-          <div className='flex items-center gap-2'>
-            <LogOut size={20} className='text-gray-900' />
-            <span>Log out</span>
-          </div>
+        <Button
+          variant="ghost"
+          className="hidden cursor-pointer shrink-0 text-slate-700 min-[1280px]:flex"
+          onClick={toggleSidebar}
+          aria-label="Toggle desktop sidebar"
+        >
+          <Menu size={20} />
+        </Button>
+      </div>
+
+      {/* Search and Actions */}
+      <div
+        className="ml-auto grid w-full min-w-0
+          grid-cols-[minmax(0,1fr)_64px]
+          items-center gap-x-3
+          min-[375px]:grid-cols-[minmax(0,1fr)_94px]
+          min-[425px]:grid-cols-[minmax(0,1fr)_auto]
+          sm:flex sm:w-auto sm:flex-1 sm:justify-end sm:gap-3
+          min-[1280px]:flex-none"
+      >
+        {/* Search */}
+        <SearchInput />
+
+        {/* Four Icons */}
+        <div
+          className="col-start-2 row-start-1 row-span-2
+            grid grid-cols-2 items-center justify-items-center
+            gap-x-3 gap-y-4
+            min-[375px]:grid-cols-3
+            min-[375px]:grid-rows-2
+            min-[375px]:gap-x-3
+            min-[425px]:flex
+            min-[425px]:flex-nowrap
+            min-[425px]:justify-between
+            min-[425px]:gap-3
+            sm:order-2 sm:flex sm:gap-3
+            min-[1024px]:gap-3 min-[1280px]:gap-4"
+        >
+          {/* Log out */}
+          <button
+            type="button"
+            onClick={() => navigate("/signin")}
+            className="flex cursor-pointer items-center justify-center
+              gap-1.5 border-0 bg-transparent p-0
+              text-slate-900 shadow-none outline-none
+              focus:outline-none focus-visible:outline-none"
+            aria-label="Log out"
+            title="Log out"
+          >
+            <LogOut size={17} />
+
+            <span className="hidden min-[768px]:inline whitespace-nowrap text-[13px] font-semibold">
+              Log out
+            </span>
+          </button>
+
+          {/* Mobile Menu */}
+          <button
+            type="button"
+            onClick={toggleMobilSidebar}
+            className="flex cursor-pointer
+             items-center justify-center
+             border-0 bg-transparent p-0
+             text-slate-900 shadow-none
+             outline-none focus:outline-none
+             focus-visible:outline-none
+             min-[1280px]:hidden"
+            aria-label="Open mobile sidebar"
+            title="Menu"
+          >
+            <Menu size={18} />
+          </button>
+
+          {/* Settings */}
+          <button
+            type="button"
+            className="flex cursor-pointer
+             items-center justify-center
+             border-0 bg-transparent p-0
+             text-slate-900 shadow-none
+             outline-none focus:outline-none
+             focus-visible:outline-none"
+            aria-label="Settings"
+            title="Settings"
+          >
+            <Settings size={17} />
+          </button>
+
+          {/* Notifications */}
+          <Notifications />
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
