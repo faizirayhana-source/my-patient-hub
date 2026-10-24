@@ -39,6 +39,7 @@ export default function SignIn() {
            tracking-tight text-white
            min-[375px]:text-[26px] sm:text-[46px]">
             Welcome to MyPatientHUB!
+            
           </h1>
 
           <p className="mt-3 text-[12px] leading-relaxed text-white min-[375px]:text-[13px] sm:text-[16.3px]">

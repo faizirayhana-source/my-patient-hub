@@ -26,7 +26,7 @@ const Sidebar = ({ collapsed, isMobile, setIsMobile }) => {
           overflow-x-hidden overflow-y-auto
           overscroll-y-contain touch-pan-y
           min-[1280px]:overflow-y-hidden
-          rounded-l-3xl rounded-r-none
+          rounded-2xl 
           border-0
           bg-gray-100/85 backdrop-blur-xl
           px-2 pt-6

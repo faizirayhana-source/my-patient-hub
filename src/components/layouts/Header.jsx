@@ -13,14 +13,12 @@ const Header = ({ toggleSidebar, toggleMobilSidebar }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScroll(window.scrollY > 0);
-    };
+      setIsScroll(window.scrollY > 0)};
 
     window.addEventListener("scroll", handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+      window.removeEventListener("scroll", handleScroll)};
   }, []);
 
   return (
@@ -28,15 +26,12 @@ const Header = ({ toggleSidebar, toggleMobilSidebar }) => {
       className={`sticky top-3 z-40
          flex w-full min-w-0 flex-col
          gap-3 rounded-2xl px-3 py-3
-         text-[#F5F1EB] transition-shadow
-         duration-300 ease-in-out
-         sm:flex-row sm:flex-wrap
-         sm:items-center sm:justify-between
-         sm:gap-3 sm:px-4 min-[1280px]:flex-nowrap
+         sm:flex-row sm:px-5
+         min-[1280px]:flex-nowrap
         ${isScroll ? "bg-gray-100/80 backdrop-blur-[30px]" : ""}`}
     >
       {/* Dashboard */}
-      <div className="flex min-w-0 shrink-0 items-center gap-4 sm:gap-14">
+      <div className="flex min-w-0 shrink-0 items-center sm:gap-14">
         <div className="min-w-0 text-[14px] text-gray-500">
           <div className="flex translate-x-3 items-center gap-2 whitespace-nowrap text-slate-500">
             <Home size={14} className="shrink-0" />
@@ -93,13 +88,11 @@ const Header = ({ toggleSidebar, toggleMobilSidebar }) => {
             onClick={() => navigate("/signin")}
             className="flex cursor-pointer items-center justify-center
               gap-1.5 border-0 bg-transparent p-0
-              text-slate-900 shadow-none outline-none
-              focus:outline-none focus-visible:outline-none"
+              text-slate-900"
             aria-label="Log out"
             title="Log out"
           >
             <LogOut size={17} />
-
             <span className="hidden min-[768px]:inline whitespace-nowrap text-[13px] font-semibold">
               Log out
             </span>
