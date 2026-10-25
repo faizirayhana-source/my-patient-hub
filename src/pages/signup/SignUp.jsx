@@ -65,7 +65,7 @@ export default function SignUp() {
       <section
         className="relative mx-3 mt-4 h-95 overflow-hidden rounded-lg bg-cover bg-center bg-no-repeat sm:h-102"
         style={{
-          backgroundImage: "url('./public/image.jpeg')",
+          backgroundImage: "url('/Image.jpeg')",
         }}
       >
         <div className="absolute inset-0 bg-[#21152F]/50 backdrop-blur-[3px]" />
