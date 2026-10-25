@@ -31,10 +31,10 @@ const Header = ({ toggleSidebar, toggleMobilSidebar }) => {
         ${isScroll ? "bg-gray-100/80 backdrop-blur-[30px]" : ""}`}
     >
       {/* Dashboard */}
-      <div className="flex min-w-0 shrink-0 items-center sm:gap-14">
-        <div className="min-w-0 text-[14px] text-gray-500">
+      <div className="flex min-w-0 items-center sm:gap-14">
+        <div className="min-w-0 text-[14px]">
           <div className="flex translate-x-3 items-center gap-2 whitespace-nowrap text-slate-500">
-            <Home size={14} className="shrink-0" />
+            <Home size={14}/>
             <span>/</span>
             <span>Dashboard</span>
           </div>
@@ -46,7 +46,7 @@ const Header = ({ toggleSidebar, toggleMobilSidebar }) => {
 
         <Button
           variant="ghost"
-          className="hidden cursor-pointer shrink-0 text-slate-700 min-[1280px]:flex"
+          className="hidden cursor-pointer text-slate-700 min-[1280px]:flex"
           onClick={toggleSidebar}
           aria-label="Toggle desktop sidebar"
         >
@@ -56,9 +56,8 @@ const Header = ({ toggleSidebar, toggleMobilSidebar }) => {
 
       {/* Search and Actions */}
       <div
-        className="ml-auto grid w-full min-w-0
-          grid-cols-[minmax(0,1fr)_64px]
-          items-center gap-x-3
+        className="grid w-full min-w-0
+          items-center gap-x-5
           min-[375px]:grid-cols-[minmax(0,1fr)_94px]
           min-[425px]:grid-cols-[minmax(0,1fr)_auto]
           sm:flex sm:w-auto sm:flex-1 sm:justify-end sm:gap-3
@@ -121,9 +120,7 @@ const Header = ({ toggleSidebar, toggleMobilSidebar }) => {
             className="flex cursor-pointer
              items-center justify-center
              border-0 bg-transparent p-0
-             text-slate-900 shadow-none
-             outline-none focus:outline-none
-             focus-visible:outline-none"
+             text-slate-900 shadow-none"
             aria-label="Settings"
             title="Settings"
           >
