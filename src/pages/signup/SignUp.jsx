@@ -330,16 +330,16 @@ export default function SignUp() {
             : "SIGN UP WITH EMAIL"}
         </button>
 
-        {/* Sign In */}
+        
         {/* Sign In */}
 <p className="cursor-pointer pt-7 text-center text-[14px] text-gray-500">
   Already member?{" "}
-  <a
-    href="/signin"
+  <Link
+    to="/signin"
     className="font-semibold text-slate-700 hover:text-purple-600"
   >
     Sign in
-  </a>
+  </Link>
 </p>
       </main>
 
