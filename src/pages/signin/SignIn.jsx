@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Mail, LockKeyhole, Check } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
@@ -11,13 +12,14 @@ import { FaFacebookF } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
 export default function SignIn() {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
 
   const handleSignIn = (e) => {
     e.preventDefault();
-    window.location.href = "/dashboard";
+    navigate("/dashboard");
   };
 
   return (

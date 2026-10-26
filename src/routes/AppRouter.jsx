@@ -27,7 +27,7 @@ function AppRouter() {
 
 
         {/* 404 - any unknown route */}
-        <Route path="/" element={<Navigate to="/SignIn" replace />} />
+        <Route path="*" element={<Navigate to="/signin" replace />} />
 
       </Routes>
     </BrowserRouter>

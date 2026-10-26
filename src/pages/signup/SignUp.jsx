@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 import Footer from "../../components/ui/Footer";
 
@@ -330,15 +331,16 @@ export default function SignUp() {
         </button>
 
         {/* Sign In */}
-        <p className="cursor-pointer pt-7 text-center text-[14px] text-gray-500">
-          Already member?{" "}
-          <a
-            href="/signin"
-            className="font-semibold text-slate-700 hover:text-purple-600"
-          >
-            Sign in
-          </a>
-        </p>
+        {/* Sign In */}
+<p className="cursor-pointer pt-7 text-center text-[14px] text-gray-500">
+  Already member?{" "}
+  <a
+    href="/signin"
+    className="font-semibold text-slate-700 hover:text-purple-600"
+  >
+    Sign in
+  </a>
+</p>
       </main>
 
       {/* Shared Footer */}
